@@ -214,9 +214,7 @@ class SmdaEntity(BaseModel):
     identifier: str = Field(examples=["Viking Gp. Top"])
     """Identifier (name) known to SMDA."""
 
-    uuid: UUID | None = Field(
-        default=None, examples=["15ce3b84-766f-4c93-9050-b154861f9100"]
-    )
+    uuid: UUID | None = Field(default=None, examples=["15ce3b84-766f-4c93-9050-b154861f9100"])
     """Identifier known to SMDA."""
 
 
@@ -471,6 +469,17 @@ class LiftCurvesData(Data):
     """The type of content these data represent."""
 
 
+class MappingsData(Data):
+    """
+    The ``data`` block contains information about the data contained in this object.
+    This class contains metadata for mappings between two sets of discrete entities, e.g.
+    rms stratigraphy to official.
+    """
+
+    content: Literal[enums.Content.mappings]
+    """The type of content these data represent."""
+
+
 class NamedAreaData(Data):
     """
     The ``data`` block contains information about the data contained in this object.
@@ -713,6 +722,7 @@ class AnyData(RootModel):
         | FluidContactData
         | KPProductData
         | LiftCurvesData
+        | MappingsData
         | NamedAreaData
         | ParametersData
         | PinchoutData
