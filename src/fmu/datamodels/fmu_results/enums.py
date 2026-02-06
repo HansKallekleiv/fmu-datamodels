@@ -77,6 +77,12 @@ class Content(StrEnum):
     Typically provided as a Pandas ``Dataframe`` for export.
     """
 
+    mappings = "mappings"
+    """Mapping between two sets of discrete entities, e.g. rms stratigraphy to official.
+    
+    Typically provided as a Pandas ``Dataframe`` for export.
+    """
+
     named_area = "named_area"
     """A named area within a field that is _not_ a region.
 
@@ -262,9 +268,7 @@ class Content(StrEnum):
 
     @classmethod
     def _missing_(cls: type[Content], value: object) -> None:
-        raise ValueError(
-            f"Invalid 'content' {value=}. Valid entries are {[m.value for m in cls]}"
-        )
+        raise ValueError(f"Invalid 'content' {value=}. Valid entries are {[m.value for m in cls]}")
 
 
 class ErtSimulationMode(str, Enum):
