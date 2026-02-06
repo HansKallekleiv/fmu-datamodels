@@ -16,6 +16,7 @@ class StandardResultName(StrEnum):
     structure_depth_fault_surface = "structure_depth_fault_surface"
     fluid_contact_surface = "fluid_contact_surface"
     fluid_contact_outline = "fluid_contact_outline"
+    zone_region_index = "zone_region_index"
 
 
 class InplaceVolumes:
@@ -80,10 +81,7 @@ class InplaceVolumes:
     @staticmethod
     def required_columns() -> list[str]:
         """Returns a list of the columns required at export."""
-        return (
-            InplaceVolumes.required_index_columns()
-            + InplaceVolumes.required_value_columns()
-        )
+        return InplaceVolumes.required_index_columns() + InplaceVolumes.required_value_columns()
 
     @staticmethod
     def table_columns() -> list[str]:
@@ -104,3 +102,19 @@ class FaultLines:
     def index_columns() -> list[str]:
         """Returns a list of the index columns."""
         return [k.value for k in FaultLines.TableIndexColumns]
+
+
+class ZoneRegionIndex:
+    """Enumerations relevant to zone/region index tables."""
+
+    class TableIndexColumns(str, Enum):
+        """The index columns for a zone/region index table."""
+
+        ZONE = "ZONE"
+        REGION = "REGION"
+        FIPGRP = "FIPGRP"
+
+    @staticmethod
+    def index_columns() -> list[str]:
+        """Returns a list of the index columns."""
+        return [k.value for k in _ZoneRegionIndex.TableIndexColumns]

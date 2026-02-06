@@ -193,6 +193,17 @@ class FluidContactOutlineStandardResult(StandardResult):
     """
 
 
+class ZoneRegionIndexStandardResult(StandardResult):
+    """
+    The ``standard_result`` field contains information about which standard results this
+    data object represent.
+    This class contains metadata for the 'zone_region_index' standard result.
+    """
+
+    name: Literal[enums.StandardResultName.zone_region_index]
+    """The identifying name for the 'zone_region_index' standard result."""
+
+
 class AnyStandardResult(RootModel):
     """
     The ``standard result`` field contains information about which standard result this
@@ -214,6 +225,7 @@ class AnyStandardResult(RootModel):
         | StructureDepthIsochoreStandardResult
         | StructureDepthFaultLinesStandardResult
         | FluidContactSurfaceStandardResult
-        | FluidContactOutlineStandardResult,
+        | FluidContactOutlineStandardResult
+        | ZoneRegionIndexStandardResult,
         Field(discriminator="name"),
     ]
