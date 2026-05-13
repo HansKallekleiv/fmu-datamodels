@@ -214,7 +214,13 @@
           "$ref": "#/$defs/WellCompletionsData"
         },
         {
-          "$ref": "#/$defs/WellPicksData"
+          "$ref": "#/$defs/WellboreTrajectoryData"
+        },
+        {
+          "$ref": "#/$defs/WellboreLogsData"
+        },
+        {
+          "$ref": "#/$defs/WellborePicksData"
         }
       ],
       "title": "AnyData"
@@ -296,6 +302,15 @@
         },
         {
           "$ref": "#/$defs/WellCompletionsStandardResult"
+        },
+        {
+          "$ref": "#/$defs/WellboreTrajectoryStandardResult"
+        },
+        {
+          "$ref": "#/$defs/WellboreLogsStandardResult"
+        },
+        {
+          "$ref": "#/$defs/WellborePicksStandardResult"
         }
       ],
       "title": "AnyStandardResult"
@@ -13022,8 +13037,8 @@
       "title": "WellCompletionsStandardResult",
       "type": "object"
     },
-    "WellPicksData": {
-      "description": "The ``data`` block contains information about the data contained in this object.\nThis class contains metadata for well picks.",
+    "WellboreLogsData": {
+      "description": "The ``data`` block contains information about the data contained in this object.\nThis class contains metadata for wellbore logs.",
       "properties": {
         "alias": {
           "anyOf": [
@@ -13067,7 +13082,7 @@
           "title": "Bbox"
         },
         "content": {
-          "const": "wellpicks",
+          "const": "wellbore_logs",
           "title": "Content",
           "type": "string"
         },
@@ -13330,7 +13345,707 @@
         "is_observation",
         "is_prediction"
       ],
-      "title": "WellPicksData",
+      "title": "WellboreLogsData",
+      "type": "object"
+    },
+    "WellboreLogsStandardResult": {
+      "description": "This class contains metadata for the 'wellbore_logs' standard result.",
+      "properties": {
+        "file_schema": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FileSchema"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "name": {
+          "const": "wellbore_logs",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "WellboreLogsStandardResult",
+      "type": "object"
+    },
+    "WellborePicksData": {
+      "description": "The ``data`` block contains information about the data contained in this object.\nThis class contains metadata for wellbore picks.",
+      "properties": {
+        "alias": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alias"
+        },
+        "base": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Layer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundingBox3D"
+            },
+            {
+              "$ref": "#/$defs/BoundingBox2D"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bbox"
+        },
+        "content": {
+          "const": "wellbore_picks",
+          "title": "Content",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "domain_reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DomainReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "msl",
+            "sb",
+            "rkb"
+          ]
+        },
+        "format": {
+          "$ref": "#/$defs/FileFormat",
+          "examples": [
+            "irap_binary"
+          ]
+        },
+        "geometry": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Geometry"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "grid_model": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GridModel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "is_observation": {
+          "title": "Is Observation",
+          "type": "boolean"
+        },
+        "is_prediction": {
+          "title": "Is Prediction",
+          "type": "boolean"
+        },
+        "layout": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Layout"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "regular",
+            "cornerpoint"
+          ]
+        },
+        "name": {
+          "examples": [
+            "VIKING GP. Top"
+          ],
+          "title": "Name",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0.0,
+          "title": "Offset",
+          "type": "number"
+        },
+        "smda_entity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SmdaEntity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "spec": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CPGridPropertySpecification"
+            },
+            {
+              "$ref": "#/$defs/CPGridSpecification"
+            },
+            {
+              "$ref": "#/$defs/FaultRoomSurfaceSpecification"
+            },
+            {
+              "$ref": "#/$defs/PointSpecification"
+            },
+            {
+              "$ref": "#/$defs/CubeSpecification"
+            },
+            {
+              "$ref": "#/$defs/PolygonsSpecification"
+            },
+            {
+              "$ref": "#/$defs/SurfaceSpecification"
+            },
+            {
+              "$ref": "#/$defs/TriangulatedSurfaceSpecification"
+            },
+            {
+              "$ref": "#/$defs/TableSpecification"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Spec"
+        },
+        "standard_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AnyStandardResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "stratigraphic": {
+          "title": "Stratigraphic",
+          "type": "boolean"
+        },
+        "table_index": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            [
+              "ZONE",
+              "REGION"
+            ]
+          ],
+          "title": "Table Index"
+        },
+        "tagname": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "ds_extract_geogrid",
+            "ds_post_strucmod"
+          ],
+          "title": "Tagname"
+        },
+        "time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "top": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Layer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "undef_is_zero": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Undef Is Zero"
+        },
+        "unit": {
+          "default": "",
+          "examples": [
+            "m"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "vertical_domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VerticalDomain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "depth",
+            "time"
+          ]
+        }
+      },
+      "required": [
+        "content",
+        "name",
+        "stratigraphic",
+        "format",
+        "is_observation",
+        "is_prediction"
+      ],
+      "title": "WellborePicksData",
+      "type": "object"
+    },
+    "WellborePicksStandardResult": {
+      "description": "This class contains metadata for the 'wellbore_picks' standard result.",
+      "properties": {
+        "file_schema": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FileSchema"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "name": {
+          "const": "wellbore_picks",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "WellborePicksStandardResult",
+      "type": "object"
+    },
+    "WellboreTrajectoryData": {
+      "description": "The ``data`` block contains information about the data contained in this object.\nThis class contains metadata for wellbore trajectories.",
+      "properties": {
+        "alias": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alias"
+        },
+        "base": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Layer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundingBox3D"
+            },
+            {
+              "$ref": "#/$defs/BoundingBox2D"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bbox"
+        },
+        "content": {
+          "const": "wellbore_trajectory",
+          "title": "Content",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "domain_reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DomainReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "msl",
+            "sb",
+            "rkb"
+          ]
+        },
+        "format": {
+          "$ref": "#/$defs/FileFormat",
+          "examples": [
+            "irap_binary"
+          ]
+        },
+        "geometry": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Geometry"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "grid_model": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GridModel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "is_observation": {
+          "title": "Is Observation",
+          "type": "boolean"
+        },
+        "is_prediction": {
+          "title": "Is Prediction",
+          "type": "boolean"
+        },
+        "layout": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Layout"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "regular",
+            "cornerpoint"
+          ]
+        },
+        "name": {
+          "examples": [
+            "VIKING GP. Top"
+          ],
+          "title": "Name",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0.0,
+          "title": "Offset",
+          "type": "number"
+        },
+        "smda_entity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SmdaEntity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "spec": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CPGridPropertySpecification"
+            },
+            {
+              "$ref": "#/$defs/CPGridSpecification"
+            },
+            {
+              "$ref": "#/$defs/FaultRoomSurfaceSpecification"
+            },
+            {
+              "$ref": "#/$defs/PointSpecification"
+            },
+            {
+              "$ref": "#/$defs/CubeSpecification"
+            },
+            {
+              "$ref": "#/$defs/PolygonsSpecification"
+            },
+            {
+              "$ref": "#/$defs/SurfaceSpecification"
+            },
+            {
+              "$ref": "#/$defs/TriangulatedSurfaceSpecification"
+            },
+            {
+              "$ref": "#/$defs/TableSpecification"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Spec"
+        },
+        "standard_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AnyStandardResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "stratigraphic": {
+          "title": "Stratigraphic",
+          "type": "boolean"
+        },
+        "table_index": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            [
+              "ZONE",
+              "REGION"
+            ]
+          ],
+          "title": "Table Index"
+        },
+        "tagname": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "ds_extract_geogrid",
+            "ds_post_strucmod"
+          ],
+          "title": "Tagname"
+        },
+        "time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "top": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Layer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "undef_is_zero": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Undef Is Zero"
+        },
+        "unit": {
+          "default": "",
+          "examples": [
+            "m"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "vertical_domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VerticalDomain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "examples": [
+            "depth",
+            "time"
+          ]
+        }
+      },
+      "required": [
+        "content",
+        "name",
+        "stratigraphic",
+        "format",
+        "is_observation",
+        "is_prediction"
+      ],
+      "title": "WellboreTrajectoryData",
+      "type": "object"
+    },
+    "WellboreTrajectoryStandardResult": {
+      "description": "This class contains metadata for the 'wellbore_trajectory' standard result.",
+      "properties": {
+        "file_schema": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FileSchema"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "name": {
+          "const": "wellbore_trajectory",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "WellboreTrajectoryStandardResult",
       "type": "object"
     },
     "Workflow": {

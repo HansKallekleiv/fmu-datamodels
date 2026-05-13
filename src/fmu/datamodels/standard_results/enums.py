@@ -39,6 +39,74 @@ class StandardResultName(StrEnum):
     simulationtimeseries = "simulationtimeseries"
     transmissibilities = "transmissibilities"
     well_completions = "well_completions"
+    wellbore_trajectory = "wellbore_trajectory"
+    wellbore_logs = "wellbore_logs"
+    wellbore_picks = "wellbore_picks"
+
+
+class WellboreTrajectory:
+    """Enumerations relevant to wellbore trajectory tables."""
+
+    class TableIndexColumns(IndexColumnsStrEnum):
+        """The index columns for a wellbore trajectory table."""
+
+        WELL = "WELL"
+        WELLBORE = "WELLBORE"
+        MD = "MD"
+
+    @staticmethod
+    def index_columns() -> list[str]:
+        """Returns a list of the index columns."""
+        return WellboreTrajectory.TableIndexColumns.index_columns()
+
+    @staticmethod
+    def required_index_columns() -> list[str]:
+        """Returns a list of the required index columns."""
+        return WellboreTrajectory.TableIndexColumns.index_columns()
+
+
+class WellboreLogs:
+    """Enumerations relevant to wellbore log tables."""
+
+    class TableIndexColumns(IndexColumnsStrEnum):
+        """The index columns for a wellbore logs table."""
+
+        WELL = "WELL"
+        WELLBORE = "WELLBORE"
+        MD = "MD"
+
+    @staticmethod
+    def index_columns() -> list[str]:
+        """Returns a list of the index columns."""
+        return WellboreLogs.TableIndexColumns.index_columns()
+
+    @staticmethod
+    def required_index_columns() -> list[str]:
+        """Returns a list of the required index columns."""
+        return WellboreLogs.TableIndexColumns.index_columns()
+
+
+class WellborePicks:
+    """Enumerations relevant to wellbore pick tables."""
+
+    class TableIndexColumns(IndexColumnsStrEnum):
+        """The index columns for a wellbore picks table."""
+
+        WELL = "WELL"
+        WELLBORE = "WELLBORE"
+        IDENTIFIER = "IDENTIFIER"
+        IDENTIFIER_TYPE = "IDENTIFIER_TYPE"
+        OBS_NO = "OBS_NO"
+
+    @staticmethod
+    def index_columns() -> list[str]:
+        """Returns a list of the index columns."""
+        return WellborePicks.TableIndexColumns.index_columns()
+
+    @staticmethod
+    def required_index_columns() -> list[str]:
+        """Returns a list of the required index columns."""
+        return WellborePicks.TableIndexColumns.index_columns()
 
 
 class InplaceVolumes:

@@ -727,13 +727,33 @@ class VolumesData(Data):
     """The type of content these data represent."""
 
 
-class WellPicksData(Data):
+class WellboreTrajectoryData(Data):
     """
     The ``data`` block contains information about the data contained in this object.
-    This class contains metadata for well picks.
+    This class contains metadata for wellbore trajectories.
     """
 
-    content: Literal[enums.Content.wellpicks]
+    content: Literal[enums.Content.wellbore_trajectory]
+    """The type of content these data represent."""
+
+
+class WellboreLogsData(Data):
+    """
+    The ``data`` block contains information about the data contained in this object.
+    This class contains metadata for wellbore logs.
+    """
+
+    content: Literal[enums.Content.wellbore_logs]
+    """The type of content these data represent."""
+
+
+class WellborePicksData(Data):
+    """
+    The ``data`` block contains information about the data contained in this object.
+    This class contains metadata for wellbore picks.
+    """
+
+    content: Literal[enums.Content.wellbore_picks]
     """The type of content these data represent."""
 
 
@@ -791,7 +811,9 @@ class AnyData(RootModel):
         | VelocityData
         | VolumesData
         | WellCompletionsData
-        | WellPicksData,
+        | WellboreTrajectoryData
+        | WellboreLogsData
+        | WellborePicksData,
         Field(discriminator="content"),
     ]
 

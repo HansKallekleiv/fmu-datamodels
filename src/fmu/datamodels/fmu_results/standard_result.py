@@ -363,6 +363,27 @@ class WellCompletionsStandardResult(StandardResult):
     """The identifying name for the 'well_completions' standard result."""
 
 
+class WellboreTrajectoryStandardResult(StandardResult):
+    """This class contains metadata for the 'wellbore_trajectory' standard result."""
+
+    name: Literal[StandardResultName.wellbore_trajectory]
+    """The identifying name for the 'wellbore_trajectory' standard result."""
+
+
+class WellboreLogsStandardResult(StandardResult):
+    """This class contains metadata for the 'wellbore_logs' standard result."""
+
+    name: Literal[StandardResultName.wellbore_logs]
+    """The identifying name for the 'wellbore_logs' standard result."""
+
+
+class WellborePicksStandardResult(StandardResult):
+    """This class contains metadata for the 'wellbore_picks' standard result."""
+
+    name: Literal[StandardResultName.wellbore_picks]
+    """The identifying name for the 'wellbore_picks' standard result."""
+
+
 class AnyStandardResult(RootModel):
     """
     The ``standard result`` field contains information about which standard result this
@@ -398,6 +419,9 @@ class AnyStandardResult(RootModel):
         | RftStandardResult
         | SimulationTimeseriesStandardResult
         | TransmissibilitiesStandardResult
-        | WellCompletionsStandardResult,
+        | WellCompletionsStandardResult
+        | WellboreTrajectoryStandardResult
+        | WellboreLogsStandardResult
+        | WellborePicksStandardResult,
         Field(discriminator="name"),
     ]

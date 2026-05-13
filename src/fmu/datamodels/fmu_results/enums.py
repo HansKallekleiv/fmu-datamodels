@@ -277,10 +277,22 @@ class Content(StrEnum):
 
     """
 
-    wellpicks = "wellpicks"
-    """Tabular data representing wellpicks.
+    wellbore_trajectory = "wellbore_trajectory"
+    """Tabular data representing wellbore trajectories.
 
-    Typically provided as a Pandas ``Dataframe``.
+    Typically provided as a Pandas ``Dataframe`` or PyArrow ``Table``.
+    """
+
+    wellbore_logs = "wellbore_logs"
+    """Tabular data representing wellbore logs sampled along measured depth.
+
+    Typically provided as a Pandas ``Dataframe`` or PyArrow ``Table``.
+    """
+
+    wellbore_picks = "wellbore_picks"
+    """Tabular data representing wellbore picks.
+
+    Typically provided as a Pandas ``Dataframe`` or PyArrow ``Table``.
     """
 
     @classmethod
